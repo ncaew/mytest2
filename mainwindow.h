@@ -2,7 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtWebKitWidgets>
+#include <QWebView>
+#include <QMessageBox>
+#include <QFile>
+#include <QJsonParseError>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QByteArray>
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +21,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QString getUrl();
 
 private:
     Ui::MainWindow *ui;
