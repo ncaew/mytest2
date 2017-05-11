@@ -6,6 +6,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QWebView *view = new QWebView(parent);
+    ui->verticalLayout_p0->addWidget(view);
+    view->load(QUrl("http://qt.nokia.com/"));
+    view->show();
+
 }
 
 MainWindow::~MainWindow()
