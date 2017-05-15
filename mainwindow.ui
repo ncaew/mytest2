@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <widget class="QWidget" name="page_0web">
@@ -24,7 +24,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_1onvif"/>
+      <widget class="QWidget" name="page_1onvif">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout"/>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>

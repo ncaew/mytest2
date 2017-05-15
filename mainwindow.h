@@ -9,6 +9,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QByteArray>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +25,13 @@ public:
 
     QString getUrl();
 
+public slots:
+    void startWeb();
+
 private:
     Ui::MainWindow *ui;
+
+
 };
 
 #endif // MAINWINDOW_H

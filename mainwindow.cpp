@@ -7,15 +7,24 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QWebView *view = new QWebView(parent);
-    ui->verticalLayout_p0->addWidget(view);
-    view->load(QUrl(getUrl()));
-    view->show();
+    QTimer * timer = new QTimer(this);
+    connect( timer, SIGNAL(timeout()), this, SLOT(startWeb()) );
+    timer->setSingleShot(true);
+    timer->start(300);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::startWeb()
+{
+    QWebView *view = new QWebView(this);
+    ui->verticalLayout_p0->addWidget(view);
+    //view->load(QUrl("http://www.baidu.com"));
+    view->load(QUrl(getUrl()));
+    view->show();
 }
 
 QString MainWindow::getUrl()
@@ -26,7 +35,10 @@ QString MainWindow::getUrl()
 
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::warning(this,"Warnning","can't open",QMessageBox::Cancel);
+        QMessageBox::warning(this,"Warnning","can't open settings.json",QMessageBox::Cancel);
+        QApplication::quit();
+        QApplication::exit(0);
+        return 0;
     }
     QTextStream in(&file);
     str=in.readAll();
