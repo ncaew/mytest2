@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QWebFrame>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +26,9 @@ void MainWindow::startWeb()
     //view->load(QUrl("http://www.baidu.com"));
     view->load(QUrl(getUrl()));
     view->show();
+
+    view->page()->mainFrame()->setScrollBarPolicy( Qt::Vertical, Qt::ScrollBarAlwaysOff );
+    view->page()->mainFrame()->setScrollBarPolicy( Qt::Horizontal, Qt::ScrollBarAlwaysOff );
 }
 
 QString MainWindow::getUrl()
