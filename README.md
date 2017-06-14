@@ -111,7 +111,9 @@ qtxmlpatterns5-doc-html
 
 
 Media Player base on:
+
 https://github.com/vlc-qt/vlc-qt
+
 https://github.com/vlc-qt/examples
 
 

@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QWebFrame>
+#include <VLCQtCore/Common.h>
+#include <VLCQtCore/Instance.h>
+#include <VLCQtCore/Media.h>
+#include <VLCQtCore/MediaPlayer.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,8 +27,9 @@ void MainWindow::startWeb()
 {
     QWebView *view = new QWebView(this);
     ui->verticalLayout_p0->addWidget(view);
-    //view->load(QUrl("http://www.baidu.com"));
+    //view->load(QUrl("http://192.168.234.1/"));
     view->load(QUrl(getUrl()));
+    ui->stackedWidget->setCurrentIndex(0);
     view->show();
 
     view->page()->mainFrame()->setScrollBarPolicy( Qt::Vertical, Qt::ScrollBarAlwaysOff );
@@ -67,4 +72,27 @@ QString MainWindow::getUrl()
         }
     }
     return ( "file://" + QApplication::applicationDirPath() + "/" + fileName);
+}
+
+void MainWindow::on_pushButton_p0_to_p1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+    _instance = new VlcInstance(VlcCommon::args(), this);
+    _player = new VlcMediaPlayer(_instance);
+    _player->setVideoWidget(ui->vlcvvideo_p1);
+    ui->vlcvvideo_p1->setMediaPlayer(_player);
+}
+
+void MainWindow::on_pushButton_p1_go_back_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_p1_play_clicked()
+{
+    qDebug()<<"Play... TODO reuse media player instance";
+    _media = new VlcMedia("/usr/local/share/sample/1494636104019.mp4", true, _instance);
+    //_media = new VlcMedia("rtsp://127.0.0.1:8554/", _instance);
+    _player->open(_media);
 }

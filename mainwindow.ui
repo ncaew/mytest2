@@ -57,6 +57,30 @@
           <property name="spacing">
            <number>0</number>
           </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_p0">
+            <item>
+             <widget class="QPushButton" name="pushButton_p0_to_p1">
+              <property name="text">
+               <string>goto video page</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_p0">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
        </layout>
@@ -83,6 +107,30 @@
           <property name="spacing">
            <number>0</number>
           </property>
+          <item>
+           <widget class="QPushButton" name="pushButton_p1_go_back">
+            <property name="text">
+             <string>go back</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_p1_play">
+            <property name="text">
+             <string>play</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="VlcWidgetVideo" name="vlcvvideo_p1" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>300</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -93,6 +141,18 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>VlcWidgetVideo</class>
+   <extends>QWidget</extends>
+   <header location="global">VLCQtWidgets/WidgetVideo.h</header>
+   <container>1</container>
+   <slots>
+    <signal>fullscreen()</signal>
+    <slot>toggleFullscreen()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
